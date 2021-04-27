@@ -1,0 +1,35 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.header-search {
+  align-self: flex-end
+}
+
+.search-by-title {
+  font-size: 70%;
+}
+
+.search-button {
+  align-content: center;
+  text-align: center;
+  margin-right: 1.5vw;
+}
+
+.search-field {
+  height: 3vh;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  /* width: 50%; */
+}
