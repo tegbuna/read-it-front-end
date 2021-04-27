@@ -52,6 +52,25 @@ function App() {
     }
   }
 
+  const handleAddToReads = async (event, formInputs) => {
+    try {
+      event.preventDefault();
+      const book = await fetch('http://localhost:3000/already_reads', {
+        body: JSON.stringify(formInputs),
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        }
+      }).then(res => res.json());
+      setBooks(prevState => ({
+        readBooks: [book, ...prevState.readBooks]
+      }))
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const handleSubmit = (evt) => {
     evt.preventDefault()
     bookSearch()
