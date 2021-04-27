@@ -6,14 +6,14 @@ import SearchResults from './components/SearchResults/SearchResults'
 
 function App() {
 
-  const [ searchData, setSearchData ] = useState({})
+  const [ searchData, setSearchData ] = useState([])
   const [ searchInput, setSearchInput ] = useState('')
 
   async function bookSearch() {
     if (searchInput !== '') {
       const newSearchResults = await searchByTitle(searchInput)
-      setSearchData(newSearchResults)
-      console.log(newSearchResults)
+      setSearchData(newSearchResults.items)
+      console.log(newSearchResults.items)
     }
   }
 
@@ -37,7 +37,7 @@ function App() {
           <input className="search-button" type="submit" value="Search" />
         </form>
       </header>
-
+      
       <SearchResults searchData={searchData}/>
      
     </div>

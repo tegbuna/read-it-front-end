@@ -1,0 +1,11 @@
+.searchResult {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    margin-top: 3vh;
+    height: 20vh;
+}
+
+.titleAuthor {
+    margin-left: 1.5vw;
+}
