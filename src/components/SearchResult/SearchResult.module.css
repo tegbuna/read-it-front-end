@@ -2,13 +2,20 @@
     display: flex;
     align-items: center;
     justify-self: center;
-    margin-top: 3vh;
+    margin: 1.5vh 0;
     height: 20vh;
+    min-height: 240px;
+    border-bottom: 1px solid rgba(155, 155, 155, 0.4);
+    padding: 0 0 20px 0;
+}
+
+.searchResult:last-child {
+    border-bottom: none;
 }
 
 .titleAuthor {
-    margin-left: 1.5vw;
-    width: 13em;
+    width: 15em;
+
 }
 
 .bookIcon {
@@ -17,5 +24,11 @@
 }
 
 .addButton {
-    margin-right: 1.5vw
+    display: flex;
+    flex-direction: column;
+    height: 10vh;
+    min-height: 80px;
+    max-height: 100px;
+    justify-content: space-around;
+    align-items: center;
 }
