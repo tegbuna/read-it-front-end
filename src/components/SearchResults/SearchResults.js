@@ -5,7 +5,10 @@ const SearchResults = (props) => {
     if (props.searchData.length > 0) {
         return(
             <div className={styles.searchResultsContainer}>
-                <SearchResult searchData={props.searchData} />
+                <SearchResult 
+                    searchData={props.searchData} 
+                    handleAddToWants={props.handleAddToWants}
+                />
             </div>
         )
     } else {
