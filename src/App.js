@@ -1,9 +1,10 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import { Route, Switch, Link, useHistory } from 'react-router-dom';
-import { searchByTitle } from './services/book_api'
-import { searchByAuthor } from './services/book_api'
-import SearchResults from './components/SearchResults/SearchResults'
+import { searchByTitle } from './services/book_api';
+import { searchByAuthor } from './services/book_api';
+import SearchResults from './components/SearchResults/SearchResults';
+import BookLists from './components/BookLists/BookLists';
 
 function App() {
 
@@ -81,6 +82,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Link to='/'>Home</Link>
         <form onSubmit={handleSubmit} className="header-search">
           <label className="search-by-title">
             Search By Title:
@@ -95,11 +97,16 @@ function App() {
       </header>
       <Switch>
         <Route exact path = '/search' render={(props) =>
-            <SearchResults 
-              searchData={searchData}
-              handleAddToWants={handleAddToWants}
-              handleAddToReads={handleAddToReads}
-            />
+          <SearchResults 
+            searchData={searchData}
+            handleAddToWants={handleAddToWants}
+            handleAddToReads={handleAddToReads}
+          />
+        } />
+        <Route exact path='/' render={(props) => 
+          <BookLists  
+            getBooks={getBooks}
+          />
         } />
       </Switch>
     </div>
