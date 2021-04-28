@@ -1,13 +1,32 @@
 import './App.css';
 import { useEffect, useState } from 'react';
+import { Route, Switch, Link, useHistory } from 'react-router-dom';
 import { searchByTitle } from './services/book_api'
 import { searchByAuthor } from './services/book_api'
 import SearchResults from './components/SearchResults/SearchResults'
 
 function App() {
 
-  const [ searchData, setSearchData ] = useState([])
-  const [ searchInput, setSearchInput ] = useState('')
+  const [ searchData, setSearchData ] = useState([]);
+  const [ searchInput, setSearchInput ] = useState('');
+  const [ getBooks, setBooks ] = useState({
+    readBooks: [],
+    notReadBooks: []
+  });
+
+  useEffect(() => {
+    const getBooks = async () => {
+      const readBooks = await fetch('http://localhost:3000/already_reads')
+        .then(res => res.json());
+      const notReadBooks = await fetch('http://localhost:3000/want_to_reads')
+        .then(res => res.json());
+        setBooks({ readBooks, notReadBooks });
+    }
+
+    getBooks();
+  }, [])
+
+  let history = useHistory()
 
   async function bookSearch() {
     if (searchInput !== '') {
@@ -17,9 +36,46 @@ function App() {
     }
   }
 
+  const handleAddToWants = async (databaseObject) => {
+    try {
+      const book = await fetch('http://localhost:3000/want_to_reads', {
+        body: JSON.stringify(databaseObject),
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        }
+      }).then(res => res.json());
+      setBooks(prevState => ({
+        notReadBooks: [book, ...prevState.notReadBooks]
+      }))
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const handleAddToReads = async (alreadyReadObject) => {
+    try {
+      const book = await fetch('http://localhost:3000/already_reads', {
+        body: JSON.stringify(alreadyReadObject),
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        }
+      }).then(res => res.json());
+      setBooks(prevState => ({
+        readBooks: [book, ...prevState.readBooks]
+      }))
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const handleSubmit = (evt) => {
     evt.preventDefault()
     bookSearch()
+    history.push('/search')
   }
 
   return (
@@ -37,9 +93,15 @@ function App() {
           <input className="search-button" type="submit" value="Search" />
         </form>
       </header>
-      
-      <SearchResults searchData={searchData}/>
-     
+      <Switch>
+        <Route exact path = '/search' render={(props) =>
+            <SearchResults 
+              searchData={searchData}
+              handleAddToWants={handleAddToWants}
+              handleAddToReads={handleAddToReads}
+            />
+        } />
+      </Switch>
     </div>
   );
 }
