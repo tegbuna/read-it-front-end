@@ -1,5 +1,6 @@
 import './App.css';
 import { useEffect, useState } from 'react';
+import { Route, Switch, Link, useHistory } from 'react-router-dom';
 import { searchByTitle } from './services/book_api'
 import { searchByAuthor } from './services/book_api'
 import SearchResults from './components/SearchResults/SearchResults'
@@ -24,6 +25,8 @@ function App() {
 
     getBooks();
   }, [])
+
+  let history = useHistory()
 
   async function bookSearch() {
     if (searchInput !== '') {
@@ -74,6 +77,7 @@ function App() {
   const handleSubmit = (evt) => {
     evt.preventDefault()
     bookSearch()
+    history.push('/search')
   }
 
   return (
@@ -91,9 +95,11 @@ function App() {
           <input className="search-button" type="submit" value="Search" />
         </form>
       </header>
-      
-      <SearchResults searchData={searchData}/>
-     
+      <Switch>
+        <Route exact path = '/search' render={(props) =>
+            <SearchResults searchData={searchData}/>
+        } />
+      </Switch>
     </div>
   );
 }

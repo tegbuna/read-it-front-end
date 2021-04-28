@@ -8,4 +8,14 @@
 
 .titleAuthor {
     margin-left: 1.5vw;
+    width: 13em;
+}
+
+.bookIcon {
+    height: 10em;
+    width: 8em;
+}
+
+.addButton {
+    margin-right: 1.5vw
 }
