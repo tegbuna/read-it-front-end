@@ -2,7 +2,7 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import { Route, Switch, Link, useHistory } from 'react-router-dom';
 import { searchByTitle } from './services/book_api';
-import { searchByAuthor } from './services/book_api';
+// import { searchByAuthor } from './services/book_api';
 import SearchResults from './components/SearchResults/SearchResults';
 import BookLists from './components/BookLists/BookLists';
 
@@ -22,20 +22,19 @@ function App() {
       const notReadBooks = await fetch('http://localhost:3000/want_to_reads')
         .then(res => res.json());
         setBooks({ readBooks, notReadBooks });
-    }
+    };
 
     getBooks();
-  }, [])
+  }, []);
 
-  let history = useHistory()
+  let history = useHistory();
 
   async function bookSearch() {
     if (searchInput !== '') {
-      const newSearchResults = await searchByTitle(searchInput)
-      setSearchData(newSearchResults.items)
-      console.log(newSearchResults.items)
-    }
-  }
+      const newSearchResults = await searchByTitle(searchInput);
+      setSearchData(newSearchResults.items);
+    };
+  };
 
   const handleAddToWants = async (databaseObject) => {
     try {
@@ -49,11 +48,11 @@ function App() {
       }).then(res => res.json());
       setBooks(prevState => ({
         notReadBooks: [book, ...prevState.notReadBooks]
-      }))
+      }));
     } catch (error) {
       console.log(error);
-    }
-  }
+    };
+  };
 
   const handleAddToReads = async (alreadyReadObject) => {
     try {
@@ -67,17 +66,57 @@ function App() {
       }).then(res => res.json());
       setBooks(prevState => ({
         readBooks: [book, ...prevState.readBooks]
-      }))
+      }));
     } catch (error) {
       console.log(error);
-    }
-  }
+    };
+  };
+
+  const handleUpdateRead = async (databaseObject) => {
+    try {
+      console.log(databaseObject);
+      await fetch(`http://localhost:3000/already_reads/${databaseObject.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'Application/json'
+        },
+        body: JSON.stringify(databaseObject)
+      });
+    } catch (error) {
+      console.log(error);
+    };
+
+    const bookIdx = getBooks.readBooks.findIndex(book => book.id === databaseObject.id);
+    const updatedBookArray = getBooks.readBooks;
+    updatedBookArray.splice(bookIdx, 1, databaseObject);
+    setBooks({ readBooks: updatedBookArray });
+  };
+
+  const handleUpdateUnread = async (databaseObject) => {
+    try {
+      console.log(databaseObject);
+      await fetch(`http://localhost:3000/want_to_reads/${databaseObject.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'Application/json'
+        },
+        body: JSON.stringify(databaseObject)
+      });
+    } catch (error) {
+      console.log(error);
+    };
+
+    const bookIdx = getBooks.notReadBooks.findIndex(book => book.id === databaseObject.id);
+    const updatedBookArray = getBooks.notReadBooks;
+    updatedBookArray.splice(bookIdx, 1, databaseObject);
+    setBooks({ notReadBooks: updatedBookArray });
+  };
 
   const handleSubmit = (evt) => {
-    evt.preventDefault()
-    bookSearch()
-    history.push('/search')
-  }
+    evt.preventDefault();
+    bookSearch();
+    history.push('/search');
+  };
 
   return (
     <div className="App">
@@ -109,6 +148,14 @@ function App() {
           />
         } />
       </Switch>
+      {/* <button onClick={() => {
+        handleUpdate({
+          title: 'Harry Potter',
+          author: 'J. K. Rowling', 
+          book_id: "3YUrtAEACAAJ",
+          have_read: true
+        })
+      }}>handleUpdate</button> */}
     </div>
   );
 }
