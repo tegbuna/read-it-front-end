@@ -1,14 +1,10 @@
-import React, { useState, useEffect } from 'react';
-
-
-
+import { useState, useEffect } from 'react';
 
 function BookLists(props) {
-    useEffect(() => {
-
-    })
+    return (
+        <div>
+        </div>
+    )
 }
-
-
 
 export default BookLists;
