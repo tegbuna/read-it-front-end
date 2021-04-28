@@ -52,15 +52,12 @@ function App() {
     } catch (error) {
       console.log(error);
     }
-    
-    console.log(databaseObject);
   }
 
-  const handleAddToReads = async (event, formInputs) => {
+  const handleAddToReads = async (alreadyReadObject) => {
     try {
-      event.preventDefault();
       const book = await fetch('http://localhost:3000/already_reads', {
-        body: JSON.stringify(formInputs),
+        body: JSON.stringify(alreadyReadObject),
         method: 'POST',
         headers: {
           'Accept': 'application/json, text/plain, */*',
@@ -101,6 +98,7 @@ function App() {
             <SearchResults 
               searchData={searchData}
               handleAddToWants={handleAddToWants}
+              handleAddToReads={handleAddToReads}
             />
         } />
       </Switch>

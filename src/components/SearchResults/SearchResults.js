@@ -8,6 +8,7 @@ const SearchResults = (props) => {
                 <SearchResult 
                     searchData={props.searchData} 
                     handleAddToWants={props.handleAddToWants}
+                    handleAddToReads={props.handleAddToReads}
                 />
             </div>
         )

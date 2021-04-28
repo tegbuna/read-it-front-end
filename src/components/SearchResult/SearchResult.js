@@ -9,6 +9,12 @@ const SearchResult = (props) => {
             book_id: book.id, 
             have_read: false 
         };
+        const alreadyReadObject = { 
+            title: book.volumeInfo.title, 
+            author: book.volumeInfo.authors[0], 
+            book_id: book.id, 
+            have_read: true 
+        };
         if (book.volumeInfo.imageLinks) {
             return(
                 <div className={styles.searchResult} key={idx}>
@@ -21,12 +27,19 @@ const SearchResult = (props) => {
                         <p>{book.volumeInfo.title}</p>
                         <p> by {book.volumeInfo.authors[0]}</p>
                     </div>
+                    <button 
+                        className={styles.addButton}
+                        onClick={() => {props.handleAddToReads(alreadyReadObject)}}
+                    >Done reading!</button>
                 </div>
             )
         } else {
             return(
                 <div className={styles.searchResult} key={idx}>
-                    <button className={styles.addButton}>Add</button>
+                    <button 
+                        className={styles.addButton}
+                        onClick={() => {props.handleAddToWants(databaseObject)}}
+                    >Add to reading list</button>
                     <img
                         src={process.env.PUBLIC_URL + 'bookicon2.jpeg'}
                         className={styles.bookIcon}
@@ -36,6 +49,10 @@ const SearchResult = (props) => {
                         <p>{book.volumeInfo.title}</p>
                         <p> by {book.volumeInfo.authors[0]}</p>
                     </div>
+                    <button 
+                        className={styles.addButton}
+                        onClick={() => {props.handleAddToReads(alreadyReadObject)}}
+                    >Done reading!</button>
                 </div>
             )
         }
