@@ -18,28 +18,24 @@ const SearchResult = (props) => {
         if (book.volumeInfo.imageLinks) {
             return(
                 <div className={styles.searchResult} key={idx}>
-                    <button 
-                        className={styles.addButton}
-                        onClick={() => {props.handleAddToWants(databaseObject)}}
-                    >Add to reading list</button>
                     <img src={book.volumeInfo.imageLinks.smallThumbnail} alt={`${book.volumeInfo.title} cover`}/>
                     <div className={styles.titleAuthor}>
                         <p>{book.volumeInfo.title}</p>
                         <p> by {book.volumeInfo.authors[0]}</p>
                     </div>
-                    <button 
-                        className={styles.addButton}
-                        onClick={() => {props.handleAddToReads(alreadyReadObject)}}
-                    >Done reading!</button>
+                    <div className={styles.addButton}>
+                        <button 
+                            onClick={() => {props.handleAddToWants(databaseObject)}}
+                        >Add to reading list</button>
+                        <button 
+                            onClick={() => {props.handleAddToReads(alreadyReadObject)}}
+                        >Done reading!</button>
+                    </div>
                 </div>
             )
         } else {
             return(
                 <div className={styles.searchResult} key={idx}>
-                    <button 
-                        className={styles.addButton}
-                        onClick={() => {props.handleAddToWants(databaseObject)}}
-                    >Add to reading list</button>
                     <img
                         src={process.env.PUBLIC_URL + 'bookicon2.jpeg'}
                         className={styles.bookIcon}
@@ -49,10 +45,14 @@ const SearchResult = (props) => {
                         <p>{book.volumeInfo.title}</p>
                         <p> by {book.volumeInfo.authors[0]}</p>
                     </div>
-                    <button 
-                        className={styles.addButton}
-                        onClick={() => {props.handleAddToReads(alreadyReadObject)}}
-                    >Done reading!</button>
+                    <div className={styles.addButton}>
+                        <button 
+                            onClick={() => {props.handleAddToWants(databaseObject)}}
+                        >Add to reading list</button>
+                        <button 
+                            onClick={() => {props.handleAddToReads(alreadyReadObject)}}
+                        >Done reading!</button>
+                    </div>
                 </div>
             )
         }
