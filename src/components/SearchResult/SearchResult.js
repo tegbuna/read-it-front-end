@@ -1,6 +1,15 @@
 import styles from './SearchResult.module.css'
+import { useRef } from 'react'
 
 const SearchResult = (props) => {
+
+    // let btnRef = useRef()
+
+    // const onBtnClick = e => {
+    //     if (btnRef.current) {
+    //         btnRef.current.setAttribute("disabled", "disabled")
+    //     }
+    // }
 
     return props.searchData.map((book, idx) => {
         const databaseObject = { 
@@ -15,6 +24,7 @@ const SearchResult = (props) => {
             book_id: book.id, 
             have_read: true 
         };
+
         if (book.volumeInfo.imageLinks) {
             return(
                 <div className={styles.searchResult} key={idx}>
@@ -25,10 +35,10 @@ const SearchResult = (props) => {
                     </div>
                     <div className={styles.addButton}>
                         <button 
-                            onClick={() => {props.handleAddToWants(databaseObject)}}
+                            onClick={() => {props.addBookToList(databaseObject)}}
                         >Add to reading list</button>
                         <button 
-                            onClick={() => {props.handleAddToReads(alreadyReadObject)}}
+                            onClick={() => {props.addBookToList(alreadyReadObject)}}
                         >Done reading!</button>
                     </div>
                 </div>

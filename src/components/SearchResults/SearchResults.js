@@ -7,8 +7,7 @@ const SearchResults = (props) => {
             <div className={styles.searchResultsContainer}>
                 <SearchResult 
                     searchData={props.searchData} 
-                    handleAddToWants={props.handleAddToWants}
-                    handleAddToReads={props.handleAddToReads}
+                    addBookToList={props.addBookToList}
                 />
             </div>
         )
