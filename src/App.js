@@ -36,11 +36,10 @@ function App() {
     }
   }
 
-  const handleAddToWants = async (event, formInputs) => {
+  const handleAddToWants = async (databaseObject) => {
     try {
-      event.preventDefault();
       const book = await fetch('http://localhost:3000/want_to_reads', {
-        body: JSON.stringify(formInputs),
+        body: JSON.stringify(databaseObject),
         method: 'POST',
         headers: {
           'Accept': 'application/json, text/plain, */*',
@@ -55,11 +54,10 @@ function App() {
     }
   }
 
-  const handleAddToReads = async (event, formInputs) => {
+  const handleAddToReads = async (alreadyReadObject) => {
     try {
-      event.preventDefault();
       const book = await fetch('http://localhost:3000/already_reads', {
-        body: JSON.stringify(formInputs),
+        body: JSON.stringify(alreadyReadObject),
         method: 'POST',
         headers: {
           'Accept': 'application/json, text/plain, */*',
@@ -97,7 +95,11 @@ function App() {
       </header>
       <Switch>
         <Route exact path = '/search' render={(props) =>
-            <SearchResults searchData={searchData}/>
+            <SearchResults 
+              searchData={searchData}
+              handleAddToWants={handleAddToWants}
+              handleAddToReads={handleAddToReads}
+            />
         } />
       </Switch>
     </div>
