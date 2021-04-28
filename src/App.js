@@ -10,18 +10,13 @@ function App() {
 
   const [ searchData, setSearchData ] = useState([]);
   const [ searchInput, setSearchInput ] = useState('');
-  const [ getBooks, setBooks ] = useState({
-    readBooks: [],
-    notReadBooks: []
-  });
+  const [ getBooks, setBooks ] = useState([]);
 
   useEffect(() => {
     const getBooks = async () => {
-      const readBooks = await fetch('http://localhost:3000/already_reads')
+      const books = await fetch('http://localhost:3000/books')
         .then(res => res.json());
-      const notReadBooks = await fetch('http://localhost:3000/want_to_reads')
-        .then(res => res.json());
-        setBooks({ readBooks, notReadBooks });
+        setBooks({ books });
     };
 
     getBooks();
@@ -54,43 +49,41 @@ function App() {
     };
   };
 
-  const handleAddToReads = async (alreadyReadObject) => {
+  const addBookToList = async (bookObject) => {
     try {
-      const book = await fetch('http://localhost:3000/already_reads', {
-        body: JSON.stringify(alreadyReadObject),
+      const book = await fetch('http://localhost:3000/books', {
+        body: JSON.stringify(bookObject),
         method: 'POST',
         headers: {
           'Accept': 'application/json, text/plain, */*',
           'Content-Type': 'application/json'
         }
       }).then(res => res.json());
-      setBooks(prevState => ({
-        readBooks: [book, ...prevState.readBooks]
-      }));
+      setBooks(getBooks.push(book));
     } catch (error) {
       console.log(error);
     };
   };
 
-  const handleUpdateRead = async (databaseObject) => {
-    try {
-      console.log(databaseObject);
-      await fetch(`http://localhost:3000/already_reads/${databaseObject.id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'Application/json'
-        },
-        body: JSON.stringify(databaseObject)
-      });
-    } catch (error) {
-      console.log(error);
-    };
+  // const handleUpdateRead = async (databaseObject) => {
+  //   try {
+  //     console.log(databaseObject);
+  //     await fetch(`http://localhost:3000/already_reads/${databaseObject.id}`, {
+  //       method: 'PUT',
+  //       headers: {
+  //         'Content-Type': 'Application/json'
+  //       },
+  //       body: JSON.stringify(databaseObject)
+  //     });
+  //   } catch (error) {
+  //     console.log(error);
+  //   };
 
-    const bookIdx = getBooks.readBooks.findIndex(book => book.id === databaseObject.id);
-    const updatedBookArray = getBooks.readBooks;
-    updatedBookArray.splice(bookIdx, 1, databaseObject);
-    setBooks({ readBooks: updatedBookArray });
-  };
+  //   const bookIdx = getBooks.readBooks.findIndex(book => book.id === databaseObject.id);
+  //   const updatedBookArray = getBooks.readBooks;
+  //   updatedBookArray.splice(bookIdx, 1, databaseObject);
+  //   setBooks({ readBooks: updatedBookArray });
+  // };
 
   const handleUpdateUnread = async (databaseObject) => {
     try {
@@ -138,8 +131,7 @@ function App() {
         <Route exact path = '/search' render={(props) =>
           <SearchResults 
             searchData={searchData}
-            handleAddToWants={handleAddToWants}
-            handleAddToReads={handleAddToReads}
+            addBookToList={addBookToList}
           />
         } />
         <Route exact path='/' render={(props) => 
