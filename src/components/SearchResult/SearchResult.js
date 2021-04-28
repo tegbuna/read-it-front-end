@@ -15,7 +15,7 @@ const SearchResult = (props) => {
                     <button 
                         className={styles.addButton}
                         onClick={() => {props.handleAddToWants(databaseObject)}}
-                    >Add</button>
+                    >Add to reading list</button>
                     <img src={book.volumeInfo.imageLinks.smallThumbnail} alt={`${book.volumeInfo.title} cover`}/>
                     <div className={styles.titleAuthor}>
                         <p>{book.volumeInfo.title}</p>
