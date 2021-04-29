@@ -8,12 +8,14 @@ const WantList = (props) => {
                     <div className={styles.listItem}>
                         <p>{book.title}</p>
                         <p> by {book.author}</p>
-                        <button onClick={() => props.handleDelete(book.id)}>X</button>
+                        <button className={styles.deleteBtn} onClick={() => props.handleDelete(book.id)}>X</button>
                     </div>
                 )
             }
         })
-    } 
+    } else {
+        return(<p></p>)
+    }
 }
 
 export default WantList
