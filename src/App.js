@@ -33,17 +33,21 @@ function App() {
 
   const addBookToList = async (bookObject) => {
     try {
-      const book = await fetch('http://localhost:3000/books', {
-        body: JSON.stringify(bookObject),
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json, text/plain, */*',
-          'Content-Type': 'application/json'
-        }
-      }).then(res => res.json());
-      setBooks(prevState => ({
-        books: [book, ...prevState.books]
-      }));
+      if (getBooks.books.find(book => book.book_id === bookObject.book_id)) {
+        alert(`You've already added this book!`);
+      } else {
+        const book = await fetch('http://localhost:3000/books', {
+          body: JSON.stringify(bookObject),
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+          }
+        }).then(res => res.json());
+        setBooks(prevState => ({
+          books: [book, ...prevState.books]
+        }));
+      }
     } catch (error) {
       console.log(error);
     };
