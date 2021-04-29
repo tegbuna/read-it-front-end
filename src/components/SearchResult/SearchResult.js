@@ -1,6 +1,14 @@
 import styles from './SearchResult.module.css'
+import { useState } from 'react'
+
+// [ readDisabled, setReadDisabled ] = useState([false, false, false, false, false, false, false, false, false, false])
+
+// [ wantDisabled, setWantDisabled ] = useState([false, false, false, false, false, false, false, false, false, false])
 
 const SearchResult = (props) => {
+
+    const [ wantDisabled, setWantDisabled ] = useState([false, false, false, false, false, false, false, false, false, false])
+    const [ readDisabled, setReadDisabled ] = useState([false, false, false, false, false, false, false, false, false, false])
 
     const findAuthor = (book) => {
         if (book.volumeInfo.authors) {
@@ -45,10 +53,32 @@ const SearchResult = (props) => {
                     </div>
                     <div className={styles.addButton}>
                         <button 
-                            onClick={() => {props.addBookToList(databaseObject)}}
+                            disabled={wantDisabled[idx]}
+                            onClick={() => {
+                                props.addBookToList(databaseObject)
+
+                                let wantDisArr = wantDisabled
+                                wantDisArr.splice(idx, 1, true)
+                                setWantDisabled(wantDisArr)
+
+                                let readDisArr = readDisabled
+                                readDisArr.splice(idx, 1, false)
+                                setReadDisabled(readDisArr)
+                            }}
                         >Add to reading list</button>
                         <button 
-                            onClick={() => {props.addBookToList(alreadyReadObject)}}
+                            disabled={readDisabled[idx]}
+                            onClick={() => {
+                                props.addBookToList(alreadyReadObject)
+
+                                let readDisArr = readDisabled
+                                readDisArr.splice(idx, 1, true)
+                                setReadDisabled(readDisArr)
+
+                                let wantDisArr = wantDisabled
+                                wantDisArr.splice(idx, 1, false)
+                                setWantDisabled(wantDisArr)
+                            }}
                         >Done reading!</button>
                     </div>
                 </div>
@@ -67,10 +97,32 @@ const SearchResult = (props) => {
                     </div>
                     <div className={styles.addButton}>
                         <button 
-                            onClick={() => {props.handleAddToWants(databaseObject)}}
+                            disabled={wantDisabled[idx]}
+                            onClick={() => {
+                                props.addBookToList(databaseObject)
+
+                                let wantDisArr = wantDisabled
+                                wantDisArr.splice(idx, 1, true)
+                                setWantDisabled(wantDisArr)
+
+                                let readDisArr = readDisabled
+                                readDisArr.splice(idx, 1, false)
+                                setReadDisabled(readDisArr)
+                            }}
                         >Add to reading list</button>
                         <button 
-                            onClick={() => {props.handleAddToReads(alreadyReadObject)}}
+                            disabled={readDisabled[idx]}
+                            onClick={() => {
+                                props.addBookToList(alreadyReadObject)
+
+                                let readDisArr = readDisabled
+                                readDisArr.splice(idx, 1, true)
+                                setReadDisabled(readDisArr)
+
+                                let wantDisArr = wantDisabled
+                                wantDisArr.splice(idx, 1, false)
+                                setWantDisabled(wantDisArr)
+                            }}
                         >Done reading!</button>
                     </div>
                 </div>
