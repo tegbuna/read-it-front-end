@@ -13,9 +13,7 @@ const WantList = (props) => {
                 )
             }
         })
-    } else {
-        return <p>woohoo!</p>
-    }
+    } 
 }
 
 export default WantList

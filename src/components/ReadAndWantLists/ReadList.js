@@ -13,9 +13,7 @@ const ReadList = (props) => {
                 )
             }
         })
-    } else {
-        return <p>yeehee!</p>
-    }
+    } 
 }
 
 export default ReadList
