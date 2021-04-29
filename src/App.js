@@ -31,23 +31,23 @@ function App() {
     };
   };
 
-  const handleAddToWants = async (databaseObject) => {
-    try {
-      const book = await fetch('http://localhost:3000/want_to_reads', {
-        body: JSON.stringify(databaseObject),
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json, text/plain, */*',
-          'Content-Type': 'application/json'
-        }
-      }).then(res => res.json());
-      setBooks(prevState => ({
-        notReadBooks: [book, ...prevState.notReadBooks]
-      }));
-    } catch (error) {
-      console.log(error);
-    };
-  };
+  // const handleAddToWants = async (databaseObject) => {
+  //   try {
+  //     const book = await fetch('http://localhost:3000/want_to_reads', {
+  //       body: JSON.stringify(databaseObject),
+  //       method: 'POST',
+  //       headers: {
+  //         'Accept': 'application/json, text/plain, */*',
+  //         'Content-Type': 'application/json'
+  //       }
+  //     }).then(res => res.json());
+  //     setBooks(prevState => ({
+  //       notReadBooks: [book, ...prevState.notReadBooks]
+  //     }));
+  //   } catch (error) {
+  //     console.log(error);
+  //   };
+  // };
 
   const addBookToList = async (bookObject) => {
     try {
@@ -59,7 +59,9 @@ function App() {
           'Content-Type': 'application/json'
         }
       }).then(res => res.json());
-      setBooks(getBooks.push(book));
+      setBooks(prevState => ({
+        books: [book, ...prevState.books]
+      }));
     } catch (error) {
       console.log(error);
     };
@@ -85,25 +87,25 @@ function App() {
   //   setBooks({ readBooks: updatedBookArray });
   // };
 
-  const handleUpdateUnread = async (databaseObject) => {
-    try {
-      console.log(databaseObject);
-      await fetch(`http://localhost:3000/want_to_reads/${databaseObject.id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'Application/json'
-        },
-        body: JSON.stringify(databaseObject)
-      });
-    } catch (error) {
-      console.log(error);
-    };
+  // const handleUpdateUnread = async (databaseObject) => {
+  //   try {
+  //     console.log(databaseObject);
+  //     await fetch(`http://localhost:3000/want_to_reads/${databaseObject.id}`, {
+  //       method: 'PUT',
+  //       headers: {
+  //         'Content-Type': 'Application/json'
+  //       },
+  //       body: JSON.stringify(databaseObject)
+  //     });
+  //   } catch (error) {
+  //     console.log(error);
+  //   };
 
-    const bookIdx = getBooks.notReadBooks.findIndex(book => book.id === databaseObject.id);
-    const updatedBookArray = getBooks.notReadBooks;
-    updatedBookArray.splice(bookIdx, 1, databaseObject);
-    setBooks({ notReadBooks: updatedBookArray });
-  };
+  //   const bookIdx = getBooks.notReadBooks.findIndex(book => book.id === databaseObject.id);
+  //   const updatedBookArray = getBooks.notReadBooks;
+  //   updatedBookArray.splice(bookIdx, 1, databaseObject);
+  //   setBooks({ notReadBooks: updatedBookArray });
+  // };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
