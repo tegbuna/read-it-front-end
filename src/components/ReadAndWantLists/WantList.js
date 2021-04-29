@@ -8,13 +8,12 @@ const WantList = (props) => {
                     <div className={styles.listItem}>
                         <p>{book.title}</p>
                         <p> by {book.author}</p>
+                        <button onClick={() => props.handleDelete(book.id)}>X</button>
                     </div>
                 )
             }
         })
-    } else {
-        return <p>woohoo!</p>
-    }
+    } 
 }
 
 export default WantList

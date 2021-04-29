@@ -8,13 +8,12 @@ const ReadList = (props) => {
                     <div className={styles.listItem}>
                         <p>{book.title}</p>
                         <p> by {book.author}</p>
+                        <button onClick={() => props.handleDelete(book.id)}>X</button>
                     </div>
                 )
             }
         })
-    } else {
-        return <p>yeehee!</p>
-    }
+    } 
 }
 
 export default ReadList
