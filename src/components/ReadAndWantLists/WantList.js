@@ -5,7 +5,7 @@ const WantList = (props) => {
         return props.getBooks.books.map((book, idx) => {
             if (book.have_read == false) {
                 return(
-                    <div>
+                    <div className={styles.listItem}>
                         <p>{book.title}</p>
                         <p> by {book.author}</p>
                     </div>
