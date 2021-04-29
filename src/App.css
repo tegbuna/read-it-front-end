@@ -4,26 +4,26 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #3d4450;
   height: 6vh;
   min-height: 50px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
 .header-search {
   display: flex;
-  width: 100%;
+  width: 70%;
   justify-content: center;
   align-items: center;
 }
 
 .search-by-title {
-  font-size: 1.5rem;
-  width: 60%;
+  font-size: 1.3rem;
+  width: 80%;
 }
 
 .search-button {
@@ -32,7 +32,7 @@
   justify-content: center;
   width: 10%;
   height: 35px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .search-field {
@@ -45,5 +45,11 @@
 .root-link {
   color: white;
   text-decoration: none;
-  margin: 0 0 0 10px;
+  margin-left: 40px;
+}
+
+.app-favicon {
+  height: 40px;
+  width: 120px;
+  margin-left: 5px;
 }
