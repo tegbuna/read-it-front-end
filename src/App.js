@@ -108,14 +108,6 @@ function App() {
           />
         } />
       </Switch>
-      {/* <button onClick={() => {
-        handleUpdate({
-          title: 'Harry Potter',
-          author: 'J. K. Rowling', 
-          book_id: "3YUrtAEACAAJ",
-          have_read: true
-        })
-      }}>handleUpdate</button> */}
     </div>
   );
 }
