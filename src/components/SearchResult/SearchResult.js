@@ -35,7 +35,6 @@ const SearchResult = (props) => {
             have_read: true,
             genre: findGenre(book),
         };
-
         if (book.volumeInfo.imageLinks) {
             return(
                 <div className={styles.searchResult} key={idx}>
