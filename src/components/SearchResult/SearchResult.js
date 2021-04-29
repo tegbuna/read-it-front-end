@@ -1,10 +1,6 @@
 import styles from './SearchResult.module.css'
 import { useState } from 'react'
 
-// [ readDisabled, setReadDisabled ] = useState([false, false, false, false, false, false, false, false, false, false])
-
-// [ wantDisabled, setWantDisabled ] = useState([false, false, false, false, false, false, false, false, false, false])
-
 const SearchResult = (props) => {
 
     const [ wantDisabled, setWantDisabled ] = useState([false, false, false, false, false, false, false, false, false, false])
