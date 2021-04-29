@@ -1,28 +1,39 @@
 import styles from './SearchResult.module.css'
-import { useRef } from 'react'
 
 const SearchResult = (props) => {
 
-    // let btnRef = useRef()
+    const findAuthor = (book) => {
+        if (book.volumeInfo.authors) {
+            const authors = book.volumeInfo.authors.map(author => author);
+            return authors.join(', ');
+        } else {
+            return 'n/a';
+        };
+    };
+    const findGenre = (book) => {
+        if (book.volumeInfo.categories) {
+            const genres = book.volumeInfo.categories.map(genre => genre);
+            return genres.join(', ');
+        } else {
+            return 'n/a';
+        };
+    };
 
-    // const onBtnClick = e => {
-    //     if (btnRef.current) {
-    //         btnRef.current.setAttribute("disabled", "disabled")
-    //     }
-    // }
 
     return props.searchData.map((book, idx) => {
         const databaseObject = { 
             title: book.volumeInfo.title, 
-            author: book.volumeInfo.authors[0], 
+            author: findAuthor(book), 
             book_id: book.id, 
-            have_read: false 
+            have_read: false,
+            genre: findGenre(book),
         };
         const alreadyReadObject = { 
             title: book.volumeInfo.title, 
-            author: book.volumeInfo.authors[0],
+            author: findAuthor(book), 
             book_id: book.id, 
-            have_read: true 
+            have_read: true,
+            genre: findGenre(book),
         };
         if (book.volumeInfo.imageLinks) {
             return(
@@ -30,7 +41,7 @@ const SearchResult = (props) => {
                     <img src={book.volumeInfo.imageLinks.smallThumbnail} alt={`${book.volumeInfo.title} cover`}/>
                     <div className={styles.titleAuthor}>
                         <p>{book.volumeInfo.title}</p>
-                        <p> by {book.volumeInfo.authors[0]}</p>
+                        <p> by {findAuthor(book)}</p>
                     </div>
                     <div className={styles.addButton}>
                         <button 
@@ -52,7 +63,7 @@ const SearchResult = (props) => {
                     />
                     <div className={styles.titleAuthor}>
                         <p>{book.volumeInfo.title}</p>
-                        <p> by {book.volumeInfo.authors[0]}</p>
+                        <p> by {findAuthor(book)}</p>
                     </div>
                     <div className={styles.addButton}>
                         <button 
