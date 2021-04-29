@@ -69,6 +69,20 @@ function App() {
     setBooks({ readBooks: updatedBookArray });
   };
 
+  const handleDelete = async (bookId) => {
+    try {
+      await fetch(`http://localhost:3000/books/${bookId}`, {
+        method: 'DELETE'
+    });
+    const updatedBooks = getBooks.books.filter(book => book.id !== bookId);
+    setBooks({
+      books: updatedBooks
+    });
+    } catch (error) {
+      console.log(error);
+    };
+  };
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
     bookSearch();
@@ -105,6 +119,7 @@ function App() {
           <BookLists  
             getBooks={getBooks}
             handleUpdate={handleUpdate}
+            handleDelete={handleDelete}
           />
         } />
       </Switch>
