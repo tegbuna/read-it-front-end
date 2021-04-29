@@ -31,24 +31,6 @@ function App() {
     };
   };
 
-  // const handleAddToWants = async (databaseObject) => {
-  //   try {
-  //     const book = await fetch('http://localhost:3000/want_to_reads', {
-  //       body: JSON.stringify(databaseObject),
-  //       method: 'POST',
-  //       headers: {
-  //         'Accept': 'application/json, text/plain, */*',
-  //         'Content-Type': 'application/json'
-  //       }
-  //     }).then(res => res.json());
-  //     setBooks(prevState => ({
-  //       notReadBooks: [book, ...prevState.notReadBooks]
-  //     }));
-  //   } catch (error) {
-  //     console.log(error);
-  //   };
-  // };
-
   const addBookToList = async (bookObject) => {
     try {
       const book = await fetch('http://localhost:3000/books', {
@@ -67,45 +49,25 @@ function App() {
     };
   };
 
-  // const handleUpdate = async (databaseObject) => {
-  //   try {
-  //     console.log(databaseObject);
-  //     await fetch(`http://localhost:3000/already_reads/${databaseObject.id}`, {
-  //       method: 'PUT',
-  //       headers: {
-  //         'Content-Type': 'Application/json'
-  //       },
-  //       body: JSON.stringify(databaseObject)
-  //     });
-  //   } catch (error) {
-  //     console.log(error);
-  //   };
+  const handleUpdate = async (formInputs) => {
+    try {
+      console.log(formInputs);
+      await fetch(`http://localhost:3000/already_reads/${formInputs.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'Application/json'
+        },
+        body: JSON.stringify(formInputs)
+      });
+    } catch (error) {
+      console.log(error);
+    };
 
-  //   const bookIdx = getBooks.readBooks.findIndex(book => book.id === databaseObject.id);
-  //   const updatedBookArray = getBooks.readBooks;
-  //   updatedBookArray.splice(bookIdx, 1, databaseObject);
-  //   setBooks({ readBooks: updatedBookArray });
-  // };
-
-  // const handleUpdateUnread = async (databaseObject) => {
-  //   try {
-  //     console.log(databaseObject);
-  //     await fetch(`http://localhost:3000/want_to_reads/${databaseObject.id}`, {
-  //       method: 'PUT',
-  //       headers: {
-  //         'Content-Type': 'Application/json'
-  //       },
-  //       body: JSON.stringify(databaseObject)
-  //     });
-  //   } catch (error) {
-  //     console.log(error);
-  //   };
-
-  //   const bookIdx = getBooks.notReadBooks.findIndex(book => book.id === databaseObject.id);
-  //   const updatedBookArray = getBooks.notReadBooks;
-  //   updatedBookArray.splice(bookIdx, 1, databaseObject);
-  //   setBooks({ notReadBooks: updatedBookArray });
-  // };
+    const bookIdx = getBooks.readBooks.findIndex(book => book.id === formInputs.id);
+    const updatedBookArray = getBooks.readBooks;
+    updatedBookArray.splice(bookIdx, 1, formInputs);
+    setBooks({ readBooks: updatedBookArray });
+  };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -115,6 +77,7 @@ function App() {
 
   return (
     <div className="App">
+      {/* HEADER */}
       <header className="App-header">
         <img src={process.env.PUBLIC_URL + 'readit-favicon.png'} alt='readit favicon' className='app-favicon'/>
         <Link to='/' className='root-link'>Home</Link>
@@ -130,6 +93,7 @@ function App() {
           <input className="search-button" type="submit" value="Search" />
         </form>
       </header>
+      {/* Routed components */}
       <Switch>
         <Route exact path = '/search' render={(props) =>
           <SearchResults 
@@ -140,6 +104,7 @@ function App() {
         <Route exact path='/' render={(props) => 
           <BookLists  
             getBooks={getBooks}
+            handleUpdate={handleUpdate}
           />
         } />
       </Switch>

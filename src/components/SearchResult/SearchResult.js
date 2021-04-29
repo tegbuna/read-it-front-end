@@ -16,7 +16,7 @@ const SearchResult = (props) => {
             title: book.volumeInfo.title, 
             author: book.volumeInfo.authors[0], 
             book_id: book.id, 
-            have_read: false 
+            have_read: false
         };
         const alreadyReadObject = { 
             title: book.volumeInfo.title, 
