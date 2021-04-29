@@ -6,6 +6,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  /* Imported fonts: Kalam, Krist & Swanky and Moo Moo: */
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300&family=Kristi&family=Swanky+and+Moo+Moo&display=swap');
+
+/* Imported fonts: Caveat, Rock Salt and Seaweed: */
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Rock+Salt&family=Seaweed+Script&display=swap');
+
   /* background: url("librarybackground.jpeg") no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
