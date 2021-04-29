@@ -7,10 +7,18 @@ const BookLists = (props) => {
         <div className={styles.containerContainer}>
             <div className={styles.listsContainer}>
                 <div className={styles.readList}>
-                    <ReadList getBooks={props.getBooks}/>
+                    <ReadList 
+                      getBooks={props.getBooks}
+                      handleUpdate={props.handleUpdate}
+                      handleDelete={props.handleDelete}
+                    />
                 </div>
                 <div className={styles.wantList}>
-                    <WantList getBooks={props.getBooks}/>
+                    <WantList 
+                      getBooks={props.getBooks}
+                      handleUpdate={props.handleUpdate}
+                      handleDelete={props.handleDelete}
+                    />
                 </div>
             </div>
         </div>

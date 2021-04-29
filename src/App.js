@@ -77,11 +77,11 @@ function App() {
     try {
       await fetch(`http://localhost:3000/books/${bookId}`, {
         method: 'DELETE'
-    });
-    const updatedBooks = getBooks.books.filter(book => book.id !== bookId);
-    setBooks({
-      books: updatedBooks
-    });
+      });
+      const updatedBooks = getBooks.books.filter(book => book.id !== bookId);
+      setBooks({
+        books: updatedBooks
+      });
     } catch (error) {
       console.log(error);
     };
