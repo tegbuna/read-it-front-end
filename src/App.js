@@ -65,7 +65,7 @@ function App() {
     };
   };
 
-  // const handleUpdateRead = async (databaseObject) => {
+  // const handleUpdate = async (databaseObject) => {
   //   try {
   //     console.log(databaseObject);
   //     await fetch(`http://localhost:3000/already_reads/${databaseObject.id}`, {
@@ -114,7 +114,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Link to='/'>Home</Link>
+        <img src={process.env.PUBLIC_URL + 'readit-favicon.png'} alt='readit favicon' className='app-favicon'/>
+        <Link to='/' className='root-link'>Home</Link>
         <form onSubmit={handleSubmit} className="header-search">
           <label className="search-by-title">
             Search By Title:
