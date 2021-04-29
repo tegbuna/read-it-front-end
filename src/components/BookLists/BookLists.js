@@ -1,16 +1,14 @@
+import ReadList from '../ReadAndWantLists/ReadList'
+import WantList from '../ReadAndWantLists/WantList'
+import styles from './BookLists.module.css'
+
 const BookLists = (props) => {
     return (
-        <div>
-          <ul className="lists-container">
-            <li>List1</li>
-          </ul>
-          
-          <ul className="lists-cotainer">
-            <li>List2</li>
-        
-          </ul>
+        <div className={styles.listContainer}>
+            <ReadList getBooks={props.getBooks}/>
+            <WantList getBooks={props.getBooks}/>
         </div>
     )
 }
 
-export default BookLists;
+export default BookLists

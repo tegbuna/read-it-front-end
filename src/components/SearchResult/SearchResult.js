@@ -20,11 +20,10 @@ const SearchResult = (props) => {
         };
         const alreadyReadObject = { 
             title: book.volumeInfo.title, 
-            author: book.volumeInfo.authors[0], 
+            author: book.volumeInfo.authors[0],
             book_id: book.id, 
             have_read: true 
         };
-
         if (book.volumeInfo.imageLinks) {
             return(
                 <div className={styles.searchResult} key={idx}>
