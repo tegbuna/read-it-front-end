@@ -5,7 +5,7 @@ const ReadList = (props) => {
         return props.getBooks.books.map((book, idx) => {
             if (book.have_read === true) {
                 return(
-                    <div>
+                    <div className={styles.listItem}>
                         <p>{book.title}</p>
                         <p> by {book.author}</p>
                     </div>

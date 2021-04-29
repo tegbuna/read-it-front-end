@@ -4,9 +4,15 @@ import styles from './BookLists.module.css'
 
 const BookLists = (props) => {
     return (
-        <div className={styles.listContainer}>
-            <ReadList getBooks={props.getBooks}/>
-            <WantList getBooks={props.getBooks}/>
+        <div className={styles.containerContainer}>
+            <div className={styles.listsContainer}>
+                <div className={styles.readList}>
+                    <ReadList getBooks={props.getBooks}/>
+                </div>
+                <div className={styles.wantList}>
+                    <WantList getBooks={props.getBooks}/>
+                </div>
+            </div>
         </div>
     )
 }
