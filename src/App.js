@@ -10,16 +10,16 @@ function App() {
 
   const [ searchData, setSearchData ] = useState([]);
   const [ searchInput, setSearchInput ] = useState('');
-  const [ getBooks, setBooks ] = useState([]);
+  const [ getBooks, setBooks ] = useState({books: []});
 
   useEffect(() => {
-    const getBooks = async () => {
+    const acquireBooks = async () => {
       const books = await fetch('http://localhost:3000/books')
         .then(res => res.json());
         setBooks({ books });
     };
 
-    getBooks();
+    acquireBooks();
   }, []);
 
   let history = useHistory();
