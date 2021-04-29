@@ -1,7 +1,7 @@
 import styles from './Lists.module.css'
 
 const ReadList = (props) => {
-    if (props.getBooks.books.length > 0) {
+    if (props.getBooks?.books.length > 0) {
         return props.getBooks.books.map((book, idx) => {
             if (book.have_read === true) {
                 return(
@@ -13,7 +13,9 @@ const ReadList = (props) => {
                 )
             }
         })
-    } 
+    } else {
+        return <p></p> 
+    }
 }
 
 export default ReadList
