@@ -1,18 +1,47 @@
+/* Imported fonts: Caveat, Rock Salt and Seaweed: */
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Rock+Salt&family=Seaweed+Script&display=swap');
+
+/* Imported fonts: Kalam, Krist & Swanky and Moo Moo: */
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300&family=Kristi&family=Swanky+and+Moo+Moo&display=swap');
+
 .containerContainer {
     display: flex;
     justify-content: center;
+    height: 94vh;
+    background: url("../../woodbackground.jpeg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .listsContainer {
     display: flex;
+    width: 96vw;
+    justify-content: center;
+    background: url("../../bookpng.png") no-repeat center center fixed; 
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
 }
 
 .readList {
     display: flex;
-    flex-direction: column
+    flex-direction: column;
+    margin-top: 2em;
+    margin-right: 5em;
+    font-family: "Kalam";
+    font-weight: bold;
+    font-size: large
 }
 
 .wantList {
     display: flex;
-    flex-direction: column
+    flex-direction: column;
+    margin-top: 2em;
+    margin-left: 5em;
+    font-family: "Kalam";
+    font-weight: bold;
+    font-size: large
 }
