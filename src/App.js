@@ -55,7 +55,6 @@ function App() {
 
   const handleUpdate = async (formInputs) => {
     try {
-      console.log(formInputs);
       await fetch(`http://localhost:3000/books/${formInputs.id}`, {
         method: 'PUT',
         headers: {
