@@ -3,6 +3,10 @@ import WantList from '../ReadAndWantLists/WantList'
 import styles from './BookLists.module.css'
 
 const BookLists = (props) => {
+
+    const changeRead = (bookId) => {
+        console.log(props.getBooks);
+    }
     return (
         <div className={styles.containerContainer}>
             <div className={styles.listsBackground}>
@@ -16,6 +20,7 @@ const BookLists = (props) => {
                         getBooks={props.getBooks}
                         handleUpdate={props.handleUpdate}
                         handleDelete={props.handleDelete}
+                        changeRead={changeRead}
                         />
                     </div>
                     <div className={styles.wantList}>
@@ -23,6 +28,7 @@ const BookLists = (props) => {
                         getBooks={props.getBooks}
                         handleUpdate={props.handleUpdate}
                         handleDelete={props.handleDelete}
+                        changeRead={changeRead}
                         />
                     </div>
                 </div>

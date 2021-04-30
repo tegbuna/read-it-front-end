@@ -26,6 +26,7 @@ const ListItem = props => {
                     <p> by {props.book.author}</p>
                     <button onClick={() => props.handleDelete(props.book.id)}>X</button>
                     <button onClick={toggleForm}>Edit</button>
+                    <button onClick={() => props.changeRead(props.book.id)}>--</button>
                 </div>
             }
         </>
