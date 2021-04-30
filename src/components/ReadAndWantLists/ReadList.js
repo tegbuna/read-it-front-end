@@ -5,13 +5,13 @@ const ReadList = (props) => {
     if (props.getBooks.books.length > 0) {
         return props.getBooks.books.map((book, idx) => {
             if (book.have_read === true) {
-                return (
+                return(
                     <ListItem 
                         key={idx}
                         book={book}
                         handleDelete={props.handleDelete}
                         handleUpdate={props.handleUpdate}
-                        changeRead={props.changeRead}
+                        changeToWant={props.changeToWant}
                     />
                 )
             }

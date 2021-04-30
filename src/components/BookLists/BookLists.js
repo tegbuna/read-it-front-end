@@ -4,9 +4,46 @@ import styles from './BookLists.module.css'
 
 const BookLists = (props) => {
 
-    const changeRead = (bookId) => {
-        console.log(props.getBooks);
-    }
+    const changeToRead = async (bookId) => {
+        try {
+            let specificBook = props.getBooks.books.find(book => book.id === bookId);
+            specificBook.have_read = true;
+            await fetch(`http://localhost:3000/books/${bookId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'Application/json'
+                },
+                body: JSON.stringify(specificBook)
+            });
+            const bookIdx = props.getBooks.books.findIndex(book => book.id === bookId);
+            const updatedBookArray = props.getBooks.books;
+            updatedBookArray.splice(bookIdx, 1, specificBook);
+            props.setBooks({ books: updatedBookArray });
+        } catch (error) {
+            console.log(error);
+        };
+    };
+
+    const changeToWant = async (bookId) => {
+        try {
+            let specificBook = props.getBooks.books.find(book => book.id === bookId);
+            specificBook.have_read = false;
+            await fetch(`http://localhost:3000/books/${bookId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'Application/json'
+                },
+                body: JSON.stringify(specificBook)
+            });
+            const bookIdx = props.getBooks.books.findIndex(book => book.id === bookId);
+            const updatedBookArray = props.getBooks.books;
+            updatedBookArray.splice(bookIdx, 1, specificBook);
+            props.setBooks({ books: updatedBookArray });
+        } catch (error) {
+            console.log(error);
+        };
+    };
+
     return (
         <div className={styles.containerContainer}>
             <div className={styles.listsBackground}>
@@ -20,7 +57,7 @@ const BookLists = (props) => {
                         getBooks={props.getBooks}
                         handleUpdate={props.handleUpdate}
                         handleDelete={props.handleDelete}
-                        changeRead={changeRead}
+                        changeToWant={changeToWant}
                         />
                     </div>
                     <div className={styles.wantList}>
@@ -28,7 +65,7 @@ const BookLists = (props) => {
                         getBooks={props.getBooks}
                         handleUpdate={props.handleUpdate}
                         handleDelete={props.handleDelete}
-                        changeRead={changeRead}
+                        changeToRead={changeToRead}
                         />
                     </div>
                 </div>
