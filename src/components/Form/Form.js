@@ -8,10 +8,15 @@ const Form = (props) => {
 
     useEffect(() => {
         if (props.editFormVisible) {
-            const { title, author } = props.book;
+            const { title, author, book_id, have_read, genre, description, id } = props.book;
             setFormState({
                 title,
-                author
+                author,
+                book_id,
+                have_read,
+                genre,
+                description,
+                id
             });
         }
     }, [props.editFormVisible, props.book]);
@@ -36,18 +41,18 @@ const Form = (props) => {
     return (
         <form onSubmit={handleSubmit}>
             <input
-                handleChange={handleChange} 
+                onChange={handleChange} 
                 name='title' 
-                value={formState.title}
                 type='text'
-                placeholder={props.book.title}
+                placeholder='Book title'
+                value={formState.title}
             />
             <input
-                handleChange={handleChange} 
+                onChange={handleChange} 
                 name='author'
-                value={formState.author}
                 type='text'
-                placeholder={props.book.author}
+                placeholder='Author'
+                value={formState.author}
             />
             <input type='submit' value={props.editFormVisible ? 'Update' : 'Add'} />
         </form>
