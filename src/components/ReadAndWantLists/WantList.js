@@ -11,7 +11,7 @@ const WantList = (props) => {
                         book={book}
                         handleDelete={props.handleDelete}
                         handleUpdate={props.handleUpdate}
-                        changeRead={props.changeRead}
+                        changeToRead={props.changeToRead}
                     />
                 )
             }

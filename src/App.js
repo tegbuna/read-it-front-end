@@ -121,6 +121,7 @@ function App() {
         <Route exact path='/' render={(props) => 
           <BookLists  
             getBooks={getBooks}
+            setBooks={setBooks}
             handleUpdate={handleUpdate}
             handleDelete={handleDelete}
           />
