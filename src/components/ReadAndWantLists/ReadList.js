@@ -1,23 +1,42 @@
 import styles from './Lists.module.css'
+import { useState } from 'react';
+import Form from '../Form/Form';
 
 const ReadList = (props) => {
+
+    const [editFormVisible, setEditFormVisible] = useState(false);
+
+    const toggleForm = () => {
+        setEditFormVisible(!editFormVisible);
+    };
+
     if (props.getBooks.books.length > 0) {
         return props.getBooks.books.map((book, idx) => {
             if (book.have_read === true) {
-                return(
-                    <div className={styles.listItem}>
-                        <p>{book.title}</p>
-                        <p> by {book.author}</p>
-                        <button 
-                            className={styles.deleteBtn}
-                            onClick={() => props.handleDelete(book.id)}
-                        >X</button>
-                    </div>
+                return (
+                    <>
+                        {
+                            editFormVisible ? 
+                            <Form 
+                                editFormVisible={editFormVisible}
+                                toggleForm={toggleForm}
+                                handleUpdate={props.handleUpdate}
+                                book={book}
+                            />
+                            :
+                            <div className={styles.listItem}> 
+                                <p>{book.title}</p>
+                                <p> by {book.author}</p>
+                                <button onClick={() => props.handleDelete(book.id)}>X</button>
+                                <button onClick={toggleForm}>Edit</button>
+                            </div>
+                        }
+                    </>
                 )
             }
         })
     } else {
-        return(<p></p>)
+        return <p></p> 
     }
 }
 

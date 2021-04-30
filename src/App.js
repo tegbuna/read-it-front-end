@@ -56,7 +56,7 @@ function App() {
   const handleUpdate = async (formInputs) => {
     try {
       console.log(formInputs);
-      await fetch(`http://localhost:3000/already_reads/${formInputs.id}`, {
+      await fetch(`http://localhost:3000/books/${formInputs.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'Application/json'
@@ -67,10 +67,10 @@ function App() {
       console.log(error);
     };
 
-    const bookIdx = getBooks.readBooks.findIndex(book => book.id === formInputs.id);
-    const updatedBookArray = getBooks.readBooks;
+    const bookIdx = getBooks.books.findIndex(book => book.id === formInputs.id);
+    const updatedBookArray = getBooks.books;
     updatedBookArray.splice(bookIdx, 1, formInputs);
-    setBooks({ readBooks: updatedBookArray });
+    setBooks({ books: updatedBookArray });
   };
 
   const handleDelete = async (bookId) => {
