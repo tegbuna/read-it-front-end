@@ -4,7 +4,7 @@ const WantList = (props) => {
 
     if (props.getBooks.books.length > 0) {
         return props.getBooks.books.map((book, idx) => {
-            if (book.have_read == false) {
+            if (book.have_read === false) {
                 return(
                     <ListItem 
                         key={idx}
