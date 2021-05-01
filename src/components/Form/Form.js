@@ -39,13 +39,16 @@ const Form = (props) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form 
+            onSubmit={handleSubmit}
+            className='edit-form'>
             <input
                 onChange={handleChange} 
                 name='title' 
                 type='text'
                 placeholder='Book title'
                 value={formState.title}
+                className='form-title form-control'
             />
             <input
                 onChange={handleChange} 
@@ -53,8 +56,13 @@ const Form = (props) => {
                 type='text'
                 placeholder='Author'
                 value={formState.author}
+                className='form-author form-control'
             />
-            <input type='submit' value={props.editFormVisible ? 'Update' : 'Add'} />
+            <input 
+                type='submit' 
+                value={props.editFormVisible ? 'Update' : 'Add'} 
+                className='form-submit btn btn-success'    
+            />
         </form>
     )
 }

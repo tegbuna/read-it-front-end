@@ -8,8 +8,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 94vh;
-    background: url("../../woodbackground.jpeg") no-repeat center center fixed; 
+    height: 94%;
+    background: url("../../woodbackground.jpeg") no-repeat center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -21,13 +21,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 58em;
-    width: 80em;
-    background: url("../../bookpng.png") no-repeat center center fixed; 
+    height: 94vh;
+    min-height: 800px;
+    width: 100vw;
+    max-width: 1100px;
+    min-width: 900px;
+    background-image: url("../../bookpng.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     -webkit-background-size: contain;
     -moz-background-size: contain;
     -o-background-size: contain;
-    background-size: contain;
 }
 
 .readsWants {
@@ -35,34 +40,43 @@
     font-weight: bold;
     justify-content: space-between;
     display: flex;
-    width: 58em;
-    margin-bottom: 1em;
+    width: 80%;
+    margin-top: 5%;
 }
 
 .listsContainer {
-    display: flex;
-    justify-content: center;
-    width: 96vw;
-    height: 68vh;
-    margin-bottom: 2em;
-    overflow: scroll;
-    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 80%;
+    height: 58%;
+    margin-bottom: 2%;
 }
 
 .readList {
     display: flex;
     flex-direction: column;
-    margin-right: 5em;
     font-family: "Kalam";
     font-weight: bold;
-    font-size: large
+    font-size: large;
+    overflow-y: hidden;
+    overflow: scroll;
+    margin-right: 0.5em;
+    padding-right: 0.5em;
 }
 
 .wantList {
     display: flex;
     flex-direction: column;
-    margin-left: 5em;
     font-family: "Kalam";
     font-weight: bold;
-    font-size: large
+    font-size: large;
+    overflow-y: hidden;
+    overflow: scroll;
+    margin-left: 0.5em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.readList::-webkit-scrollbar, .wantList::-webkit-scrollbar {
+    display: none;
 }

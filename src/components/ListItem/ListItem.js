@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Form from '../Form/Form';
-import styles from '../ReadAndWantLists/Lists.module.css';
 
 const ListItem = props => {
 
@@ -21,17 +20,17 @@ const ListItem = props => {
                 book={props.book}
                 />
                 :
-                <div className={styles.listItem}> 
-                    <p>{props.book.title}</p>
-                    <p> by {props.book.author}</p>
+                <div className='list-item'> 
+                    <p className='list-title'>{props.book.title}</p>
+                    <p className='list-author'> by {props.book.author}</p>
                     <div className='list-buttons'>
+                        <img 
+                            className='delete-button'
+                            src={process.env.PUBLIC_URL + 'erasericon.png'}
+                            onClick={() => props.handleDelete(props.book.id)} 
+                        />
                         <button 
-                            className='btn btn-danger delete-button'
-                            onClick={() => props.handleDelete(props.book.id)}>
-                            X
-                        </button>
-                        <button 
-                            className='btn btn-secondary edit-button'
+                            className='btn btn-primary edit-button'
                             onClick={toggleForm}>
                             Edit
                         </button>
@@ -40,14 +39,14 @@ const ListItem = props => {
                                 <img 
                                     className='arrow-right'
                                     src={process.env.PUBLIC_URL + 'right-arrow.png'}
-                                    onClick={() => props.changeToWant(props.book.id)}>
-                                </img>
+                                    onClick={() => props.changeToWant(props.book.id)}
+                                />
                             :
-                                <img 
+                                <img
                                     className='arrow-left'
                                     src={process.env.PUBLIC_URL + 'left-arrow.png'}
-                                    onClick={() => props.changeToRead(props.book.id)}>
-                                </img>
+                                    onClick={() => props.changeToRead(props.book.id)}
+                                />
                         }
                     </div>
                 </div>
