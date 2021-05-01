@@ -102,12 +102,12 @@ function App() {
           <label className="search-by-title">
             Search By Title:
             <input
-              className="search-field"
+              className="search-field form-control"
               type="text"
               onChange={e => setSearchInput(e.target.value)}
             />
           </label>
-          <input className="search-button" type="submit" value="Search" />
+          <input className="search-button btn btn-light" type="submit" value="Search" />
         </form>
       </header>
       {/* Routed components */}
