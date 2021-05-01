@@ -22,6 +22,7 @@
 }
 
 .search-by-title {
+  display: flex;
   font-size: 1.3rem;
   width: 80%;
 }
@@ -33,6 +34,7 @@
   width: 10%;
   height: 35px;
   font-size: 1.1rem;
+  padding: 0;
 }
 
 .search-field {
@@ -52,4 +54,33 @@
   height: 40px;
   width: 120px;
   margin-left: 5px;
+}
+
+.arrow-right, .arrow-left {
+  height: 20px;
+  width: 20px;
+  transition: all;
+}
+
+.arrow-right:hover, .arrow-left:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.delete-button {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 0;
+}
+
+.edit-button {
+  width: 50px;
+  height: 30px;
+  padding: 0;
+}
+
+.list-buttons {
+  display: flex;
+  justify-content: space-around;
 }
