@@ -3,9 +3,6 @@ import { useState } from 'react'
 
 const SearchResult = (props) => {
 
-    const [ wantDisabled, setWantDisabled ] = useState([false, false, false, false, false, false, false, false, false, false])
-    const [ readDisabled, setReadDisabled ] = useState([false, false, false, false, false, false, false, false, false, false])
-
     const findAuthor = (book) => {
         if (book.volumeInfo.authors) {
             const authors = book.volumeInfo.authors.map(author => author);
@@ -49,31 +46,31 @@ const SearchResult = (props) => {
                     </div>
                     <div className={styles.addButton}>
                         <button 
-                            disabled={wantDisabled[idx]}
+                            disabled={props.wantDisabled[idx]}
                             onClick={() => {
                                 props.addBookToList(databaseObject)
 
-                                let wantDisArr = wantDisabled
+                                let wantDisArr = props.wantDisabled
                                 wantDisArr.splice(idx, 1, true)
-                                setWantDisabled(wantDisArr)
+                                props.setWantDisabled(wantDisArr)
 
-                                let readDisArr = readDisabled
+                                let readDisArr = props.readDisabled
                                 readDisArr.splice(idx, 1, false)
-                                setReadDisabled(readDisArr)
+                                props.setReadDisabled(readDisArr)
                             }}
                         >Add to reading list</button>
                         <button 
-                            disabled={readDisabled[idx]}
+                            disabled={props.readDisabled[idx]}
                             onClick={() => {
                                 props.addBookToList(alreadyReadObject)
 
-                                let readDisArr = readDisabled
+                                let readDisArr = props.readDisabled
                                 readDisArr.splice(idx, 1, true)
-                                setReadDisabled(readDisArr)
+                                props.setReadDisabled(readDisArr)
 
-                                let wantDisArr = wantDisabled
+                                let wantDisArr = props.wantDisabled
                                 wantDisArr.splice(idx, 1, false)
-                                setWantDisabled(wantDisArr)
+                                props.setWantDisabled(wantDisArr)
                             }}
                         >Done reading!</button>
                     </div>
@@ -93,31 +90,31 @@ const SearchResult = (props) => {
                     </div>
                     <div className={styles.addButton}>
                         <button 
-                            disabled={wantDisabled[idx]}
+                            disabled={props.wantDisabled[idx]}
                             onClick={() => {
                                 props.addBookToList(databaseObject)
 
-                                let wantDisArr = wantDisabled
+                                let wantDisArr = props.wantDisabled
                                 wantDisArr.splice(idx, 1, true)
-                                setWantDisabled(wantDisArr)
+                                props.setWantDisabled(wantDisArr)
 
-                                let readDisArr = readDisabled
+                                let readDisArr = props.readDisabled
                                 readDisArr.splice(idx, 1, false)
-                                setReadDisabled(readDisArr)
+                                props.setReadDisabled(readDisArr)
                             }}
                         >Add to reading list</button>
                         <button 
-                            disabled={readDisabled[idx]}
+                            disabled={props.readDisabled[idx]}
                             onClick={() => {
                                 props.addBookToList(alreadyReadObject)
 
-                                let readDisArr = readDisabled
+                                let readDisArr = props.readDisabled
                                 readDisArr.splice(idx, 1, true)
-                                setReadDisabled(readDisArr)
+                                props.setReadDisabled(readDisArr)
 
-                                let wantDisArr = wantDisabled
+                                let wantDisArr = props.wantDisabled
                                 wantDisArr.splice(idx, 1, false)
-                                setWantDisabled(wantDisArr)
+                                props.setWantDisabled(wantDisArr)
                             }}
                         >Done reading!</button>
                     </div>
