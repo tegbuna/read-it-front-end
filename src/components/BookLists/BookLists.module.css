@@ -1,0 +1,68 @@
+/* Imported fonts: Caveat, Rock Salt and Seaweed: */
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Rock+Salt&family=Seaweed+Script&display=swap');
+
+/* Imported fonts: Kalam, Krist & Swanky and Moo Moo: */
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300&family=Kristi&family=Swanky+and+Moo+Moo&display=swap');
+
+.containerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 94vh;
+    background: url("../../woodbackground.jpeg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.listsBackground {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 58em;
+    width: 80em;
+    background: url("../../bookpng.png") no-repeat center center fixed; 
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+}
+
+.readsWants {
+    font-family: 'Kalam';
+    font-weight: bold;
+    justify-content: space-between;
+    display: flex;
+    width: 58em;
+    margin-bottom: 1em;
+}
+
+.listsContainer {
+    display: flex;
+    justify-content: center;
+    width: 96vw;
+    height: 68vh;
+    margin-bottom: 2em;
+    overflow: scroll;
+    padding: 0;
+}
+
+.readList {
+    display: flex;
+    flex-direction: column;
+    margin-right: 5em;
+    font-family: "Kalam";
+    font-weight: bold;
+    font-size: large
+}
+
+.wantList {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5em;
+    font-family: "Kalam";
+    font-weight: bold;
+    font-size: large
+}

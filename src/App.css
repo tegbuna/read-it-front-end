@@ -1,35 +1,55 @@
 .App {
   text-align: center;
+  height: 100%;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 5vh;
+  background-color: #2c313a;
+  height: 6vh;
+  min-height: 50px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
 .header-search {
-  align-self: flex-end
+  display: flex;
+  width: 70%;
+  justify-content: center;
+  align-items: center;
 }
 
 .search-by-title {
-  font-size: 70%;
+  font-size: 1.3rem;
+  width: 80%;
 }
 
 .search-button {
-  align-content: center;
-  text-align: center;
-  margin-right: 1.5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10%;
+  height: 35px;
+  font-size: 1.1rem;
 }
 
 .search-field {
-  height: 3vh;
+  height: 70%;
   margin-left: 1vw;
   margin-right: 1vw;
-  /* width: 50%; */
+  width: 60%;
+}
+
+.root-link {
+  color: white;
+  text-decoration: none;
+  margin-left: 40px;
+}
+
+.app-favicon {
+  height: 40px;
+  width: 120px;
+  margin-left: 5px;
 }
