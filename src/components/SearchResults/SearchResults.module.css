@@ -1,6 +1,42 @@
-.searchResultsContainer {
+.deskBackground {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 94%;
+    background: url("../../woodbackground.jpeg") no-repeat center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.notebookBackground {
+    background-image: url('../../notepaper.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
+    justify-content: flex-end;
+    height: 94vh;
+    width: 60vw;
+    min-width: 900px;
+    min-height: 900px;
+}
+
+.searchResultsContainer {
+    overflow-y: hidden;
+    overflow: scroll;
+    height: 43em;
+    margin-right: 3.8em;
+    margin-bottom: 1.7em
+}
+
+.searchResultsContainer::-webkit-scrollbar {
+    display: none;
 }
