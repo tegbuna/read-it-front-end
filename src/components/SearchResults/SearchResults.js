@@ -10,6 +10,10 @@ const SearchResults = (props) => {
                         <SearchResult 
                             searchData={props.searchData} 
                             addBookToList={props.addBookToList}
+                            wantDisabled={props.wantDisabled}
+                            readDisabled={props.readDisabled}
+                            setWantDisabled={props.setWantDisabled}
+                            setReadDisabled={props.setReadDisabled}
                         />
                     </div>
                 </div>

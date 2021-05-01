@@ -11,6 +11,8 @@ function App() {
   const [ searchData, setSearchData ] = useState([]);
   const [ searchInput, setSearchInput ] = useState('');
   const [ getBooks, setBooks ] = useState({books: []});
+  const [ wantDisabled, setWantDisabled ] = useState([false, false, false, false, false, false, false, false, false, false])
+  const [ readDisabled, setReadDisabled ] = useState([false, false, false, false, false, false, false, false, false, false])
 
   useEffect(() => {
     const acquireBooks = async () => {
@@ -90,6 +92,8 @@ function App() {
     evt.preventDefault();
     bookSearch();
     history.push('/search');
+    setReadDisabled([false, false, false, false, false, false, false, false, false, false]);
+    setWantDisabled([false, false, false, false, false, false, false, false, false, false]);
   };
 
   return (
@@ -116,6 +120,10 @@ function App() {
           <SearchResults 
             searchData={searchData}
             addBookToList={addBookToList}
+            wantDisabled={wantDisabled}
+            readDisabled={readDisabled}
+            setWantDisabled={setWantDisabled}
+            setReadDisabled={setReadDisabled}
           />
         } />
         <Route exact path='/' render={(props) => 
