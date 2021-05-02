@@ -1,4 +1,4 @@
-# Readit 📚 :
+# Readit 📚 
 
 This is a book project "Readit" where users can search for books that they want to read using the API. They can add books to their "Want to read" list, "Have read" list, or "Currently reading" list. Users will also be able to create reviews for books.
 ___
