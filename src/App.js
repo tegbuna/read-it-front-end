@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     const acquireBooks = async () => {
-      const books = await fetch('http://we-read-it.herokuapp.com/books')
+      const books = await fetch('https://we-read-it.herokuapp.com/books')
         .then(res => res.json());
         setBooks({ books });
     };
@@ -57,7 +57,7 @@ function App() {
 
   const handleUpdate = async (formInputs) => {
     try {
-      await fetch(`http://we-read-it.herokuapp.com/books/${formInputs.id}`, {
+      await fetch(`https://we-read-it.herokuapp.com/books/${formInputs.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'Application/json'
@@ -76,7 +76,7 @@ function App() {
 
   const handleDelete = async (bookId) => {
     try {
-      await fetch(`http://we-read-it.herokuapp.com/books/${bookId}`, {
+      await fetch(`https://we-read-it.herokuapp.com/books/${bookId}`, {
         method: 'DELETE'
       });
       const updatedBooks = getBooks.books.filter(book => book.id !== bookId);
