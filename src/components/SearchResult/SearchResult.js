@@ -1,5 +1,4 @@
 import styles from './SearchResult.module.css'
-import { useState } from 'react'
 
 const SearchResult = (props) => {
 
