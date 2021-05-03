@@ -8,7 +8,7 @@ const BookLists = (props) => {
         try {
             let specificBook = props.getBooks.books.find(book => book.id === bookId);
             specificBook.have_read = true;
-            await fetch(`http://read-it-back.herokuapp.com/books/${bookId}`, {
+            await fetch(`http://localhost:3000/books/${bookId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'Application/json'
@@ -28,7 +28,7 @@ const BookLists = (props) => {
         try {
             let specificBook = props.getBooks.books.find(book => book.id === bookId);
             specificBook.have_read = false;
-            await fetch(`http://read-it-back.herokuapp.com/books/${bookId}`, {
+            await fetch(`http://localhost:3000/books/${bookId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'Application/json'

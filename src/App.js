@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     const acquireBooks = async () => {
-      const books = await fetch('https://read-it-back.herokuapp.com/books')
+      const books = await fetch('http://localhost:3000/books')
         .then(res => res.json());
         setBooks({ books });
     };
@@ -38,7 +38,7 @@ function App() {
       if (getBooks.books.find(book => book.book_id === bookObject.book_id)) {
         alert(`You've already added this book!`);
       } else {
-        const book = await fetch('https://read-it-back.herokuapp.com/books', {
+        const book = await fetch('http://localhost:3000/books', {
           body: JSON.stringify(bookObject),
           method: 'POST',
           headers: {
@@ -57,7 +57,7 @@ function App() {
 
   const handleUpdate = async (formInputs) => {
     try {
-      await fetch(`https://read-it-back.herokuapp.com/books/${formInputs.id}`, {
+      await fetch(`http://localhost:3000/books/${formInputs.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'Application/json'
@@ -76,7 +76,7 @@ function App() {
 
   const handleDelete = async (bookId) => {
     try {
-      await fetch(`https://read-it-back.herokuapp.com/books/${bookId}`, {
+      await fetch(`http://localhost:3000/books/${bookId}`, {
         method: 'DELETE'
       });
       const updatedBooks = getBooks.books.filter(book => book.id !== bookId);
